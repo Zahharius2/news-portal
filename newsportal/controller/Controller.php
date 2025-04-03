@@ -2,6 +2,8 @@
 
 class Controller {
 
+
+    
     public static function StartSite() {
         $arr = News::getLast10News();
         include_once 'view/start.php';
@@ -16,6 +18,15 @@ class Controller {
         $arr = News::getAllNews();
         include_once 'view/allnews.php';
     }
+
+        public function registerForm() {
+            include_once('view/formRegister.php');
+        }
+    
+        public function registerUser() {
+            $result = Register::registerUser();
+            include_once('view/answerRegister.php');
+        }    
 
     public static function NewsByCatID($id) {
         $arr = News::getNewsByCategoryID($id);
@@ -50,5 +61,14 @@ class Controller {
         $arr = Comments::getCommentsCountByNewsID($newsid);
         ViewComments::CommentsCountWithAncor($arr);
     }
+    public function registerForm()
+    {
+        include_once('view/formRegister.php');
+    }
+    public function registerUser()
+    {
+        $result = Register::registerUser();
 
+        include_once ('view/answerRegister.php')
+    }
 }
